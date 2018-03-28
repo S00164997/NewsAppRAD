@@ -4,8 +4,30 @@
              xmlns:local="clr-namespace:NewsAppRAD"
              x:Class="NewsAppRAD.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Search News" ></Label>
+            <Entry x:Name="entrysearch" Placeholder="Type Your text"  TextChanged="OnTextChangesEvent" />
+            <ListView x:Name="lstnews" BackgroundColor="Azure">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
 
-</ContentPage>
+                        <ViewCell x:Name="cellOne">
+                            <StackLayout Orientation="Horizontal" >
+                                <!--<TapGestureRecognizer Tapped="OnTapped"/>-->
+                                <StackLayout Orientation="Vertical" Spacing="10" >
+                                    
+                                    <Label Text="{Binding Title}" Font="18"></Label>
+                                    <Label Text="{Binding Description}" TextColor="Gray"></Label>
+                                    <Label Text="{Binding Provider}" TextColor="Gray"></Label>
+                                </StackLayout>
+                                <Image Source="{Binding ThumbnailUrl}" HeightRequest="50" WidthRequest="50" HorizontalOptions="EndAndExpand"></Image>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage> 
